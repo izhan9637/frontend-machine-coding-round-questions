@@ -10,17 +10,13 @@ drawGrid();
 
 boxContianer.addEventListener("click", handleClickParent);
 
+// using event delegation here, I have attached a eventListener to the common ancestor of the divs
 function handleClickParent(event) {
   if (event.target.classList.contains("box")) {
-    const targetElement = event.target;
-    // const rowIndex = parseInt(targetElement.dataset.row);
-    // const colIndex = parseInt(targetElement.dataset.col);
-
     event.target.classList.add("green");
     clickedBoxes.push(event.target);
 
-    console.log(clickedBoxes.length);
-
+    // we only have 7 divs visible so when we have make all the 7 divs green then it's time to reset them all
     if (clickedBoxes.length === 7) {
       resetGrid();
     }
@@ -33,6 +29,7 @@ function resetGrid() {
       const box = clickedBoxes[i];
       box.classList.remove("green");
 
+      // when we reset the last element then we also empty the clickedBoxes array so that the cylle can continue
       if (i === clickedBoxes.length - 1) {
         clickedBoxes.length = 0;
       }
@@ -47,10 +44,7 @@ function drawGrid() {
       const box = document.createElement("div");
       if (grid[i][j] === true) {
         box.classList.add("box");
-        // box.textContent = "A";
       }
-      box.dataset.row = i;
-      box.dataset.col = j;
       fragment.appendChild(box);
     }
     boxContianer.appendChild(fragment);
