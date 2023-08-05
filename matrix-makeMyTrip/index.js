@@ -4,7 +4,7 @@ const grid = [
   [true, true, true],
 ];
 const boxContianer = document.querySelector(".box-container");
-const clickedBoxes = [];
+let clickedBoxes = new Set(); // to handle multiple clicks on same box we are using set
 
 drawGrid();
 
@@ -13,25 +13,29 @@ boxContianer.addEventListener("click", handleClickParent);
 // using event delegation here, I have attached a eventListener to the common ancestor of the divs
 function handleClickParent(event) {
   if (event.target.classList.contains("box")) {
-    event.target.classList.add("green");
-    clickedBoxes.push(event.target);
+    if (!clickedBoxes.has(event.target)) {
+      event.target.classList.add("green");
+      clickedBoxes.add(event.target);
+    }
 
     // we only have 7 divs visible so when we have make all the 7 divs green then it's time to reset them all
-    if (clickedBoxes.length === 7) {
+    if (clickedBoxes.size === 7) {
       resetGrid();
     }
   }
 }
 
 function resetGrid() {
-  for (let i = 0; i < clickedBoxes.length; i++) {
+  const clickedOrder = Array.from(clickedBoxes);
+
+  for (let i = 0; i < clickedOrder.length; i++) {
     setTimeout(() => {
-      const box = clickedBoxes[i];
+      const box = clickedOrder[i];
       box.classList.remove("green");
 
       // when we reset the last element then we also empty the clickedBoxes array so that the cylle can continue
-      if (i === clickedBoxes.length - 1) {
-        clickedBoxes.length = 0;
+      if (i === clickedOrder.length - 1) {
+        clickedBoxes.clear();
       }
     }, 1000 * (i + 1));
   }
