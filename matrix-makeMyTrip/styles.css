@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.green {
+  background-color: green;
+}
+
+.box-container {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.box {
+  border: 1px solid black;
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+}
