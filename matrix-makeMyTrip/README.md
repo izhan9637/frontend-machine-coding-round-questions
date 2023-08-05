@@ -7,3 +7,5 @@ Problem Statement:
 2. When user clicks on a box or div then it's background should turn green
 3. When all the boxes are clicked and turned green then the grid should reset and make all the boxes white again.
 4. The boxes should reset in the same order in which they were clicked with 1 sec delay.
+
+https://github.com/izhan9637/frontend-machine-coding-round-questions/blob/main/matrix-makeMyTrip/makeMyTrip-ui-task.PNG
