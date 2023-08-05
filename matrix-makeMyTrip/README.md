@@ -8,4 +8,4 @@ Problem Statement:
 3. When all the boxes are clicked and turned green then the grid should reset and make all the boxes white again.
 4. The boxes should reset in the same order in which they were clicked with 1 sec delay.
 
-https://github.com/izhan9637/frontend-machine-coding-round-questions/blob/main/matrix-makeMyTrip/makeMyTrip-ui-task.PNG
+![makeMyTrip-ui-task](https://github.com/izhan9637/frontend-machine-coding-round-questions/assets/43714869/071b00ab-aeb2-4e42-9216-5f1b9ce95b35)
